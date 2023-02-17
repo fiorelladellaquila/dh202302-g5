@@ -23,7 +23,7 @@ public class CustomerUpdateInput {
     private LocalDate birthDate;
 
     @JsonCreator
-    public CustomerInput(String name, String lastname, Gender gender, LocalDate birthDate) {
+    public CustomerUpdateInput(String name, String lastname, Gender gender, LocalDate birthDate) {
         this.name = name;
         this.lastname = lastname;
         this.gender = gender;
