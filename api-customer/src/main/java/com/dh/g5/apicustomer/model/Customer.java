@@ -16,6 +16,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "docType", "documentNumber" }) })
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
