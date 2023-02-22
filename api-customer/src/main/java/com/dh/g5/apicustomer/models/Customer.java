@@ -1,4 +1,4 @@
-package com.dh.g5.apicustomer.model;
+package com.dh.g5.apicustomer.models;
 
 import com.dh.g5.apicustomer.dto.CustomerInput;
 import com.dh.g5.apicustomer.dto.CustomerUpdateInput;
@@ -16,15 +16,15 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "docType", "documentNumber" }) })
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "id", "docType", "documentNumber" }) }, name = "customers")
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "BINARY(16)")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column
     @NotNull
-    @NotBlank
     private DocType docType;
 
     @Column
@@ -43,23 +43,20 @@ public class Customer {
     
     @Column
     @NotNull
-    @NotBlank
     private Gender gender;
 
     @Column
     @NotNull
-    @NotBlank
     private LocalDate birthDate;
 
     @Column
     @NotNull
-    @NotBlank
-    private Boolean active = true;
+    private Boolean isDeleted = false;
 
     public Customer(CustomerInput input) {
         this.name = input.getName();
         this.lastname = input.getLastname();
-        this.birthDate = input.getBirthDate();
+        this.birthDate = LocalDate.parse(input.getBirthDate());
         this.docType = input.getDocType();
         this.documentNumber = input.getDocumentNumber();
         this.gender = input.getGender();
@@ -68,13 +65,13 @@ public class Customer {
     public Customer update(CustomerUpdateInput input) {
         this.name = input.getName();
         this.lastname = input.getLastname();
-        this.birthDate = input.getBirthDate();
+        this.birthDate = LocalDate.parse(input.getBirthDate());
         this.gender = input.getGender();
 
         return this;
     }
 
     public void softDelete() {
-        this.active = false;
+        this.isDeleted = true;
     }
 }
