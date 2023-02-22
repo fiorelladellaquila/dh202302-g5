@@ -43,6 +43,6 @@ public class CustomerController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id) throws NotFoundException, BadRequestException {
 
-        return ResponseEntity.ok("Booking deleted ID: " + customerService.softDelete(id));
+        return ResponseEntity.ok("Customer deleted ID: " + customerService.softDelete(id));
     }
 }
