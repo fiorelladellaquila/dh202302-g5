@@ -1,12 +1,12 @@
 package com.dh.g5.apiwallet.models;
 
-import com.sun.istack.NotNull;
-import jdk.jfr.DataAmount;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.UUID;
 
 @Entity

@@ -7,10 +7,11 @@ import com.dh.g5.apicustomer.exceptions.NotFoundException;
 import com.dh.g5.apicustomer.models.Customer;
 import com.dh.g5.apicustomer.models.DocType;
 import com.dh.g5.apicustomer.service.CustomerService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
 import java.util.List;
 import java.util.UUID;
 
