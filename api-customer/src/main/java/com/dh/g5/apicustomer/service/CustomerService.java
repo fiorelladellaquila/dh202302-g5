@@ -9,6 +9,8 @@ import com.dh.g5.apicustomer.models.DocType;
 import com.dh.g5.apicustomer.repository.CustomerRepository;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -21,12 +23,20 @@ public class CustomerService {
     }
 
     public List<Customer> getByDocumentAndDocType(@Nullable DocType docType, @Nullable String documentNumber) {
+
+
+
         return this.customerRepository.findByDocTypeOrDocumentNumber(docType, documentNumber);
     }
 
+    @Transactional
     public Customer create(CustomerInput input) {
+
+
         return customerRepository.save(
                 new Customer(input)
+
+
         );
     }
 
