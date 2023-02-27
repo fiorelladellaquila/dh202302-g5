@@ -1,6 +1,8 @@
 server:
   port: {PORT:8888}
 
+
+
 spring:
   application:
     name: config-server
@@ -8,7 +10,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/jonathanvictoricadh/dh202302-g5-config
-          default-label: task-2-config
+          uri: https://github.com/JuanCarlosGuti/config-server
           force-pull: true
           search-paths: configData
