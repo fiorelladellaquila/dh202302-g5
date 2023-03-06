@@ -1,16 +1,15 @@
-package com.dh.g5.apiwallet;
+package com.dh.grupo5.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-
-@EnableDiscoveryClient
 @SpringBootApplication
-public class ApiWalletApplication {
+@EnableDiscoveryClient
+public class ApiGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiWalletApplication.class, args);
+		SpringApplication.run(ApiGatewayApplication.class, args);
 	}
 
 }
