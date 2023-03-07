@@ -1,48 +1,32 @@
 package com.dh.g5.apicustomer.dto;
 
-import com.dh.g5.apicustomer.model.DocType;
-import com.dh.g5.apicustomer.model.Gender;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.dh.g5.apicustomer.models.Gender;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CustomerUpdateInput {
+
     @NotNull
     @NotBlank
     private String name;
+
     @NotNull
     @NotBlank
     private String lastname;
+
     @NotNull
-    @NotBlank
     private Gender gender;
+
     @NotNull
     @NotBlank
-    private LocalDate birthDate;
+    private String birthDate;
 
-    @JsonCreator
-    public CustomerUpdateInput(String name, String lastname, Gender gender, LocalDate birthDate) {
-        this.name = name;
-        this.lastname = lastname;
-        this.gender = gender;
-        this.birthDate = birthDate;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
 }

@@ -1,0 +1,18 @@
+server:
+  port: 8888
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/JuanCarlosGuti/config-server
+          default-label: main
+          force-pull: true
+          search-paths: configData

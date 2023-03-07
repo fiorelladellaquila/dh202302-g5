@@ -2,16 +2,19 @@ package com.dh.g5.apicustomer.service;
 
 import com.dh.g5.apicustomer.dto.CustomerInput;
 import com.dh.g5.apicustomer.dto.CustomerUpdateInput;
-import com.dh.g5.apicustomer.model.Customer;
+import com.dh.g5.apicustomer.exceptions.BadRequestException;
+import com.dh.g5.apicustomer.exceptions.NotFoundException;
+import com.dh.g5.apicustomer.models.Customer;
+import com.dh.g5.apicustomer.models.DocType;
+import com.dh.g5.apicustomer.models.QCustomer;
 import com.dh.g5.apicustomer.repository.CustomerRepository;
-import lombok.extern.log4j.Log4j;
-import org.springframework.http.HttpStatus;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
-@Log4j
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
@@ -20,26 +23,37 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    public List<Customer> getByDocumentAndDocType(@Nullable DocType docType, @Nullable String documentNumber) {
+
+
+
+        return this.customerRepository.findByDocTypeOrDocumentNumber(docType, documentNumber);
+    }
+
+    @Transactional
     public Customer create(CustomerInput input) {
+
+
         return customerRepository.save(
                 new Customer(input)
+
+
         );
     }
 
-    public Customer update(CustomerUpdateInput input, UUID customerId) {
+    public Customer update(CustomerUpdateInput input, UUID customerId) throws NotFoundException {
         Customer customer = customerRepository.findById(customerId).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer Not Found")
+                () -> new NotFoundException("Customer Not Found")
         );
 
         return customerRepository.save(customer.update(input));
     }
 
-    public UUID softDelete(UUID customerId) {
+    public UUID softDelete(UUID customerId) throws NotFoundException, BadRequestException {
         final Customer customer = customerRepository.findById(customerId).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer Not Found")
+                () -> new NotFoundException("Customer Not Found")
         );
-        if (!customer.getActive())
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Customer is already deleted");
+        if (customer.getIsDeleted()) throw new BadRequestException("Customer is already deleted");
         customer.softDelete();
 
         return customerRepository.save(customer).getId();
