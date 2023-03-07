@@ -17,7 +17,7 @@ import java.util.Optional;
 @LoadBalancerClient(value="api-customer", configuration= LoadBalancerConfiguration.class)
 public interface CustomerClient {
 
-    @GetMapping("/customer/{doctype}/{docnum}")
+    @GetMapping("/customers/{doctype}/{docnum}")
     Optional<CustomerDTO> getCustomer (@PathVariable String doctype, @PathVariable String docnum);
 
     @Getter

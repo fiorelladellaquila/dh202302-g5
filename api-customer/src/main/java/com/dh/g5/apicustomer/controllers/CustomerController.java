@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/customers")
 public class CustomerController {
 
