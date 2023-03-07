@@ -7,18 +7,20 @@ import lombok.Setter;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@FeignClient(name = "api-customer")
+@FeignClient(name="api-customer")
+@LoadBalancerClient(value="api-customer", configuration= LoadBalancerConfiguration.class)
 public interface CustomerFeign {
 
-    @GetMapping("/customer")
-    Optional<Customer> getByDocumentAndDocType(@RequestParam DocType docType, @RequestParam String documentNumber);
-
+    @GetMapping("/customers/{docType}/{documentNumber}")
+    List<Customer> getCustomer (@PathVariable DocType docType, @PathVariable String documentNumber);
     @Getter
     @Setter
     class Customer {

@@ -5,7 +5,9 @@ import com.dh.g5.apiwallet.dto.WalletInput;
 import com.dh.g5.apiwallet.dto.WalletUpdateInput;
 import com.dh.g5.apiwallet.exceptions.CustomerNotFoundException;
 import com.dh.g5.apiwallet.exceptions.NotFoundException;
+import com.dh.g5.apiwallet.models.Currency;
 import com.dh.g5.apiwallet.models.Wallet;
+import com.dh.g5.apiwallet.repository.CurrencyRepository;
 import com.dh.g5.apiwallet.repository.WalletRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +16,23 @@ import java.util.UUID;
 @Service
 public class WalletService  {
     private final WalletRepository walletRepository;
+    private final CurrencyRepository currencyRepository;
     private final CustomerFeign customerFeign;
 
-    public WalletService(WalletRepository walletRepository, CustomerFeign customerFeign) {
+    public WalletService(WalletRepository walletRepository, CurrencyRepository currencyRepository, CustomerFeign customerFeign) {
         this.walletRepository = walletRepository;
+        this.currencyRepository = currencyRepository;
         this.customerFeign = customerFeign;
     }
 
 
     public Wallet create(WalletInput input) throws CustomerNotFoundException {
-        customerFeign.getByDocumentAndDocType(input.getDocType(), input.getDocumentNumber()).orElseThrow(() -> new CustomerNotFoundException("Customer not Found"));
+        if (customerFeign.getCustomer( input.getDocType(), input.getDocumentNumber()).size() == 0) {
+            throw new CustomerNotFoundException("Customer not found");
+        }
+
+        Currency currency = currencyRepository.save(input.getCurrency());
+        input.setCurrency(currency);
         return walletRepository.save(
                 new Wallet(input)
         );

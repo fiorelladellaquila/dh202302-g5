@@ -44,7 +44,7 @@ public class Wallet {
       this.docType = input.getDocType();
       this.documentNumber = input.getDocumentNumber();
       this.balance = input.getBalance();
-      this.currency = this.getCurrency();
+      this.currency = input.getCurrency();
    }
 
    public Wallet update(WalletUpdateInput input) {

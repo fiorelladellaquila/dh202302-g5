@@ -16,16 +16,9 @@ public class LoadBalancerConfiguration {
     @Bean
     ReactorLoadBalancer<ServiceInstance> configure(Environment environment, LoadBalancerClientFactory loadBalancerClientFactory) {
         String name = environment.getProperty(LoadBalancerClientFactory.PROPERTY_NAME);
-//        return new RandomLoadBalancer(loadBalancerClientFactory.getLazyProvider(
-//                name, ServiceInstanceListSupplier.class), name
-//        );
-
-//        return new RoundRobinLoadBalancer(loadBalancerClientFactory.getLazyProvider(
-//                name, ServiceInstanceListSupplier.class), name
-//        );
-
         return new RoundRobinLoadBalancer(loadBalancerClientFactory.getLazyProvider(
                 name, ServiceInstanceListSupplier.class), name
         );
     }
+
 }

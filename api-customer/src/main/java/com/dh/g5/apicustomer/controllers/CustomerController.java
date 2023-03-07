@@ -24,8 +24,13 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<Customer>> getByDocumentAndDocType(@RequestParam(required = false) DocType docType, @RequestParam(required = false) String documentNumber ) {
+        return ResponseEntity.ok(customerService.getByDocumentAndDocType(docType, documentNumber));
+    }
+
+    @GetMapping("/{docType}/{documentNumber}")
+    public ResponseEntity<List<Customer>> getByDocumentAndDocTypeApi(@PathVariable DocType docType, @PathVariable String documentNumber ) {
         return ResponseEntity.ok(customerService.getByDocumentAndDocType(docType, documentNumber));
     }
 
