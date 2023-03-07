@@ -14,10 +14,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 @FeignClient(name = "api-customer")
-@LoadBalancerClient(value = "stores", configuration = LoadBalancerConfiguration.class)
 public interface CustomerFeign {
 
-    @GetMapping("/api/v1/customer")
+    @GetMapping("/customer")
     Optional<Customer> getByDocumentAndDocType(@RequestParam DocType docType, @RequestParam String documentNumber);
 
     @Getter

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/api/v1/courses")
+@RequestMapping("/wallet")
 public class WalletController {
 
     private final WalletService walletService;
