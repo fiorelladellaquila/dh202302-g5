@@ -17,23 +17,19 @@ public class CustomerInput {
     @NotNull
     private DocType docType;
 
-    @NotNull
-    @NotBlank
+
     private String documentNumber;
 
-    @NotNull
-    @NotBlank
+
     private String name;
 
-    @NotNull
-    @NotBlank
+
     private String lastname;
 
-    @NotNull
+
     private Gender gender;
 
-    @NotNull
-    @NotBlank
-    private String birthDate;
+
+
 
 }

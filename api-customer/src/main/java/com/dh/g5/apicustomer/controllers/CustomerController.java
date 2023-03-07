@@ -31,7 +31,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<Customer> create(@RequestBody @Valid CustomerInput customer) throws BadRequestException {
+    public ResponseEntity<Customer> create(@RequestBody CustomerInput customer) throws BadRequestException {
         return ResponseEntity.ok(customerService.create(customer));
     }
 
