@@ -2,6 +2,7 @@ package com.dh.g5.apicustomer.dto;
 
 import com.dh.g5.apicustomer.models.DocType;
 import com.dh.g5.apicustomer.models.Gender;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

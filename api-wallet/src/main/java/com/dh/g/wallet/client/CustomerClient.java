@@ -20,6 +20,7 @@ public interface CustomerClient {
     @GetMapping("/customers/{doctype}/{docnumentNumber}")
     CustomerDTO getCustomer (@PathVariable String doctype, @PathVariable String docnumentNumber);
 
+
     @Getter
     @Setter
     @AllArgsConstructor

@@ -2,9 +2,7 @@ package com.dh.g5.apicustomer.models;
 
 import com.dh.g5.apicustomer.dto.CustomerInput;
 import com.dh.g5.apicustomer.dto.CustomerUpdateInput;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -13,7 +11,8 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "id", "docType", "documentNumber" }) }, name = "customers")
