@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -23,11 +24,13 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public List<Customer> getByDocumentAndDocType(@Nullable DocType docType, @Nullable String documentNumber) {
+    public Customer getByDocumentAndDocType(@Nullable String docType, @Nullable String documentNumber) throws NotFoundException {
+
+        return customerRepository.findByDocTypeAndDocumentNumber(docType,documentNumber).orElseThrow(
+                ()-> new NotFoundException("Customer not found")
+        );
 
 
-
-        return this.customerRepository.findByDocTypeOrDocumentNumber(docType, documentNumber);
     }
 
     @Transactional
@@ -49,13 +52,12 @@ public class CustomerService {
         return customerRepository.save(customer.update(input));
     }
 
-    public UUID softDelete(UUID customerId) throws NotFoundException, BadRequestException {
-        final Customer customer = customerRepository.findById(customerId).orElseThrow(
+    public void softDelete(UUID customerId) throws NotFoundException, BadRequestException {
+        Customer customer = customerRepository.findById(customerId).orElseThrow(
                 () -> new NotFoundException("Customer Not Found")
         );
-        if (customer.getIsDeleted()) throw new BadRequestException("Customer is already deleted");
-        customer.softDelete();
 
-        return customerRepository.save(customer).getId();
+
+        customerRepository.delete(customer);
     }
 }

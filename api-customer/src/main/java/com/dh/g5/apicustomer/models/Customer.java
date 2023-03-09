@@ -25,7 +25,7 @@ public class Customer {
 
     @Column
     @NotNull
-    private DocType docType;
+    private String docType;
 
     @Column
     @NotNull
@@ -42,12 +42,9 @@ public class Customer {
     private String lastname;
     
     @Column
-    private Gender gender;
+    private String gender;
 
 
-
-    @Column
-    private Boolean isDeleted = false;
 
     public Customer(CustomerInput input) {
         this.name = input.getName();
@@ -67,7 +64,5 @@ public class Customer {
         return this;
     }
 
-    public void softDelete() {
-        this.isDeleted = true;
-    }
+
 }

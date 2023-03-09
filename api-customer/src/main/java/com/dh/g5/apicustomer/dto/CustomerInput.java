@@ -15,19 +15,11 @@ import javax.validation.constraints.NotNull;
 public class CustomerInput {
 
     @NotNull
-    private DocType docType;
-
-
+    private String docType;
     private String documentNumber;
-
-
     private String name;
-
-
     private String lastname;
-
-
-    private Gender gender;
+    private String gender;
 
 
 

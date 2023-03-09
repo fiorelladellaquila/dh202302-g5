@@ -23,7 +23,7 @@ public class CustomerUpdateInput {
     private String lastname;
 
     @NotNull
-    private Gender gender;
+    private String gender;
 
     @NotNull
     @NotBlank
