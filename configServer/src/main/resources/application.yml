@@ -9,7 +9,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/JuanCarlosGuti/config-server
+          uri: https://github.com/AgustinDamelio/BackEnd1_Group5_config
           default-label: main
           force-pull: true
           search-paths: configData
