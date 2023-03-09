@@ -17,16 +17,18 @@ import java.util.Optional;
 @LoadBalancerClient(value="api-customer", configuration= LoadBalancerConfiguration.class)
 public interface CustomerClient {
 
-    @GetMapping("/customers/{doctype}/{docnum}")
-    Optional<CustomerDTO> getCustomer (@PathVariable String doctype, @PathVariable String docnum);
+    @GetMapping("/customers/{doctype}/{docnumentNumber}")
+    CustomerDTO getCustomer (@PathVariable String doctype, @PathVariable String docnumentNumber);
+
 
     @Getter
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
     class CustomerDTO {
-        private Long id;
+
         private String name;
+        private String documentNumber;
         private String surname;
         private String gender;
         private LocalDate birthDate;

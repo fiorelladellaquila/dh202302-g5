@@ -7,11 +7,13 @@ import com.dh.g5.apicustomer.exceptions.NotFoundException;
 import com.dh.g5.apicustomer.models.Customer;
 import com.dh.g5.apicustomer.models.DocType;
 import com.dh.g5.apicustomer.service.CustomerService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -24,13 +26,13 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<Customer>> getByDocumentAndDocType(@RequestParam(required = false) DocType docType, @RequestParam(required = false) String documentNumber ) {
-        return ResponseEntity.ok(customerService.getByDocumentAndDocType(docType, documentNumber));
+    @GetMapping("/{doctype}/{docnumentNumber}")
+    public ResponseEntity<Customer> getByDocumentAndDocType(@PathVariable String doctype, @PathVariable String docnumentNumber) throws NotFoundException {
+        return new ResponseEntity<>(customerService.getByDocumentAndDocType(doctype,docnumentNumber), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Customer> create(@RequestBody @Valid CustomerInput customer) throws BadRequestException {
+    public ResponseEntity<Customer> create(@RequestBody CustomerInput customer) throws BadRequestException {
         return ResponseEntity.ok(customerService.create(customer));
     }
 
@@ -41,7 +43,7 @@ public class CustomerController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable UUID id) throws NotFoundException, BadRequestException {
-
-        return ResponseEntity.ok("Customer deleted ID: " + customerService.softDelete(id));
+                     customerService.softDelete(id);
+        return ResponseEntity.ok("Customer deleted ID: "+id );
     }
 }

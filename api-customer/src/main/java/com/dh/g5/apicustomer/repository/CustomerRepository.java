@@ -7,10 +7,11 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, UUID>, QuerydslPredicateExecutor<Customer> {
-    List<Customer> findByDocTypeOrDocumentNumber(DocType docType, String documentNumber);
+    Optional<Customer> findByDocTypeAndDocumentNumber(String docType, String documentNumber);
 
 }

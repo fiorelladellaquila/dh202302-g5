@@ -25,7 +25,10 @@ public class WalletService {
 
 
     public void create(Wallet wallet) throws WalletException {
-        customerClient.getCustomer(wallet.getDocumentType(), wallet.getDocumentValue()).orElseThrow(() -> new WalletException(MessageError.CUSTOMER_NOT_FOUND));
+        CustomerClient.CustomerDTO customer = customerClient.getCustomer(wallet.getDocumentType(), wallet.getDocumentValue());//.orElseThrow(() -> new WalletException(MessageError.CUSTOMER_NOT_FOUND));
+        if (customer ==null){
+            throw new  WalletException(MessageError.WALLET_EXISTS);
+        }
         if(walletRepository.findByDocumentTypeAndDocumentValueAndCurrency_Code(wallet.getDocumentType(), wallet.getDocumentValue(),wallet.getCurrency().getCode()).isPresent()){
             throw new  WalletException(MessageError.WALLET_EXISTS);
         }

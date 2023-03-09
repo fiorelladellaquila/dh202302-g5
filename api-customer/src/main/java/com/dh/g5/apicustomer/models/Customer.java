@@ -24,7 +24,7 @@ public class Customer {
 
     @Column
     @NotNull
-    private DocType docType;
+    private String docType;
 
     @Column
     @NotNull
@@ -41,21 +41,14 @@ public class Customer {
     private String lastname;
     
     @Column
-    @NotNull
-    private Gender gender;
+    private String gender;
 
-    @Column
-    @NotNull
-    private LocalDate birthDate;
 
-    @Column
-    @NotNull
-    private Boolean isDeleted = false;
 
     public Customer(CustomerInput input) {
         this.name = input.getName();
         this.lastname = input.getLastname();
-        this.birthDate = LocalDate.parse(input.getBirthDate());
+
         this.docType = input.getDocType();
         this.documentNumber = input.getDocumentNumber();
         this.gender = input.getGender();
@@ -64,13 +57,11 @@ public class Customer {
     public Customer update(CustomerUpdateInput input) {
         this.name = input.getName();
         this.lastname = input.getLastname();
-        this.birthDate = LocalDate.parse(input.getBirthDate());
+
         this.gender = input.getGender();
 
         return this;
     }
 
-    public void softDelete() {
-        this.isDeleted = true;
-    }
+
 }

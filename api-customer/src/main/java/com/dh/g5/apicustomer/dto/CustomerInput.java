@@ -16,26 +16,13 @@ import javax.validation.constraints.NotNull;
 public class CustomerInput {
 
     @NotNull
-    private DocType docType;
-
-    @NotNull
-    @NotBlank
+    private String docType;
     private String documentNumber;
-
-    @NotNull
-    @NotBlank
     private String name;
-
-    @NotNull
-    @NotBlank
     private String lastname;
+    private String gender;
 
-    @NotNull
-    private Gender gender;
 
-    @NotNull
-    @NotBlank
-    //@JsonFormat(pattern="yyyy-MM-dd")
-    private String birthDate;
+
 
 }
