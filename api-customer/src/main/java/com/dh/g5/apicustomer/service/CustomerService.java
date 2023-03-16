@@ -6,7 +6,6 @@ import com.dh.g5.apicustomer.exceptions.BadRequestException;
 import com.dh.g5.apicustomer.exceptions.NotFoundException;
 import com.dh.g5.apicustomer.models.Customer;
 import com.dh.g5.apicustomer.models.DocType;
-import com.dh.g5.apicustomer.models.QCustomer;
 import com.dh.g5.apicustomer.repository.CustomerRepository;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
