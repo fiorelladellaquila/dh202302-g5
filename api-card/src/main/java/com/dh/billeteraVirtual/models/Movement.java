@@ -38,8 +38,8 @@ public class Movement {
 
     private Status status;
 
-    public void setWalletCommission(double walletCommission) {
-        this.walletCommission = subtotal * 0.5;
+    public void setWalletCommission(double importe) {
+        this.walletCommission = importe * 0.5;
     }
 
     private double walletCommission;
