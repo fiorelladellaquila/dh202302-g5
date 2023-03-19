@@ -1,10 +1,10 @@
-package com.dh2023g5.tarjeta;
+package com.dh2023g5.apicard;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TarjetaApplicationTests {
+class ApiCardApplicationTests {
 
 	@Test
 	void contextLoads() {

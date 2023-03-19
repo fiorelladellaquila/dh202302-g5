@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.dh2023g5</groupId>
-	<artifactId>movimientos</artifactId>
+	<artifactId>api-card</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>movimientos</name>
+	<name>api-card</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
@@ -27,6 +27,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
 		<dependency>
 			<groupId>javax.persistence</groupId>

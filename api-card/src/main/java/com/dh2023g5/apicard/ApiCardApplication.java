@@ -1,13 +1,13 @@
-package com.dh2023g5.movimientos;
+package com.dh2023g5.apicard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MovimientosApplication {
+public class ApiCardApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MovimientosApplication.class, args);
+		SpringApplication.run(ApiCardApplication.class, args);
 	}
 
 }
