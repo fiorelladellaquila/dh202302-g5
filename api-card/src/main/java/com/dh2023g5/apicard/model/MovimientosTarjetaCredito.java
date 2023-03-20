@@ -15,13 +15,10 @@ import java.math.BigDecimal;
 public class MovimientosTarjetaCredito {
     @Id
     private String idMovimiento;
-
     private String numeroDeTarjeta;
     private TipoMovimiento tipo;
     private String   moneda;
-    private BigDecimal límiteCalificado;
-    private BigDecimal límiteConsumido;
-    private BigDecimal límiteDisponible;
+
 }
 
 
