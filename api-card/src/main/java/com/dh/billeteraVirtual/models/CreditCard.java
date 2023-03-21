@@ -1,9 +1,6 @@
 package com.dh.billeteraVirtual.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.w3c.dom.DocumentType;
 
@@ -12,7 +9,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
-
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
@@ -26,7 +23,7 @@ public class CreditCard implements Serializable {
     @Id
     private UUID id;
 
-    private String CardNumber;
+    private String cardNumber;
     private String documentType;
     private String documentNumber;
     private String currency;
