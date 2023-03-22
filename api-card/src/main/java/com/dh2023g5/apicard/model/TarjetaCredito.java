@@ -1,13 +1,14 @@
 package com.dh2023g5.apicard.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Document(collection = "tarjeta_credito")
