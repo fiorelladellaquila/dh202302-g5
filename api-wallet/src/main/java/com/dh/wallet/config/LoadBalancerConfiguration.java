@@ -1,4 +1,4 @@
-package com.dh.g.wallet.config;
+package com.dh.wallet.config;
 
 
 import org.springframework.cloud.client.ServiceInstance;

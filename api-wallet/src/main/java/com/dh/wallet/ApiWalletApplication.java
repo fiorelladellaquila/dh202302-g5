@@ -1,4 +1,4 @@
-package com.dh.g.wallet;
+package com.dh.wallet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

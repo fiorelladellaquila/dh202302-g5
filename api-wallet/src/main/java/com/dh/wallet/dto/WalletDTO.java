@@ -1,4 +1,4 @@
-package com.dh.g.wallet.dto;
+package com.dh.wallet.dto;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
-package com.dh.g.wallet.repository;
+package com.dh.wallet.repository;
 
-import com.dh.g.wallet.model.Wallet;
+import com.dh.wallet.model.Wallet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

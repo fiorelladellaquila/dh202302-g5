@@ -1,4 +1,4 @@
-package com.dh.g.wallet;
+package com.dh.wallet;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

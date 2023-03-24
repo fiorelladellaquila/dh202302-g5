@@ -7,8 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api-margins" />
-        <module name="billeteraVirtual" />
         <module name="configServer" />
+        <module name="billeteraVirtual" />
         <module name="discovery" />
         <module name="api-customer" />
         <module name="api-gateway" />
@@ -16,7 +16,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="api-customer" target="1.5" />
+      <module name="api-customer" target="17" />
       <module name="api-gateway" target="17" />
       <module name="api-margins" target="17" />
       <module name="api-wallet" target="17" />
@@ -27,6 +27,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-customer" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
       <module name="api-margins" options="-parameters" />
       <module name="api-wallet" options="-parameters" />

@@ -1,6 +1,6 @@
-package com.dh.g.wallet.client;
+package com.dh.wallet.client;
 
-import com.dh.g.wallet.config.LoadBalancerConfiguration;
+import com.dh.wallet.config.LoadBalancerConfiguration;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDate;
-import java.util.Optional;
 
 @FeignClient(name="api-customer")
 @LoadBalancerClient(value="api-customer", configuration= LoadBalancerConfiguration.class)

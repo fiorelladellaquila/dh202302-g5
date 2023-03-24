@@ -1,4 +1,4 @@
-package com.dh.g.wallet.exception;
+package com.dh.wallet.exception;
 
 public class WalletException extends Exception {
 

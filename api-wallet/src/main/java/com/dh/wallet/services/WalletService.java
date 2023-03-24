@@ -1,11 +1,11 @@
-package com.dh.g.wallet.services;
+package com.dh.wallet.services;
 
-import com.dh.g.wallet.client.CustomerClient;
-import com.dh.g.wallet.dto.WalletDTO;
-import com.dh.g.wallet.exception.MessageError;
-import com.dh.g.wallet.exception.WalletException;
-import com.dh.g.wallet.model.Wallet;
-import com.dh.g.wallet.repository.WalletRepository;
+import com.dh.wallet.client.CustomerClient;
+import com.dh.wallet.dto.WalletDTO;
+import com.dh.wallet.exception.MessageError;
+import com.dh.wallet.exception.WalletException;
+import com.dh.wallet.model.Wallet;
+import com.dh.wallet.repository.WalletRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

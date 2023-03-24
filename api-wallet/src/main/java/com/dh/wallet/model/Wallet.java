@@ -1,4 +1,4 @@
-package com.dh.g.wallet.model;
+package com.dh.wallet.model;
 
 
 import lombok.AllArgsConstructor;

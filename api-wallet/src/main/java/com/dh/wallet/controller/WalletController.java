@@ -1,9 +1,9 @@
-package com.dh.g.wallet.controller;
+package com.dh.wallet.controller;
 
-import com.dh.g.wallet.dto.WalletDTO;
-import com.dh.g.wallet.exception.WalletException;
-import com.dh.g.wallet.model.Wallet;
-import com.dh.g.wallet.services.WalletService;
+import com.dh.wallet.dto.WalletDTO;
+import com.dh.wallet.exception.WalletException;
+import com.dh.wallet.model.Wallet;
+import com.dh.wallet.services.WalletService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
