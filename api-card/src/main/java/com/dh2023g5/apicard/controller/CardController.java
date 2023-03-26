@@ -1,25 +1,34 @@
 package com.dh2023g5.apicard.controller;
 
+import com.dh2023g5.apicard.Exceptions.CardException;
 import com.dh2023g5.apicard.model.TarjetaCredito;
 import com.dh2023g5.apicard.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/card")
 public class CardController {
 
+    private final CardService creditCardService;
+
     @Autowired
-    private CardService service;
+    public CardController(CardService creditCardService) {
+        this.creditCardService = creditCardService;
+    }
 
 
-public ResponseEntity<TarjetaCredito> createCard(@RequestBody TarjetaCredito tarjeta) {
+    @GetMapping("/{TipoDocumento}/{numeroDocumento}")
+    public ResponseEntity<TarjetaCredito> getCards(@PathVariable String tipoDocumento, @PathVariable String numeroDocumento) throws CardException {
+        return new ResponseEntity<>(creditCardService.findByDocTypeAndDocNum(tipoDocumento,numeroDocumento),HttpStatus.OK);
+    }
 
-    return new  ResponseEntity<> (service.save(tarjeta), HttpStatus.CREATED);
+
+    @PostMapping
+    public ResponseEntity<TarjetaCredito> createCard(@RequestBody TarjetaCredito tarjeta) throws CardException {
+    return new  ResponseEntity<>(creditCardService.createCard(tarjeta), HttpStatus.CREATED);
 
 }
 

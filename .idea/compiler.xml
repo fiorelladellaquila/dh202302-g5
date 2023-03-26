@@ -6,10 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="api-card" />
         <module name="api-margins (1)" />
-        <module name="configServer" />
+        <module name="api-card" />
         <module name="discovery" />
+        <module name="configServer" />
         <module name="api-customer" />
         <module name="api-gateway" />
         <module name="api-wallet" />

@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,20 +19,21 @@ import java.time.LocalDateTime;
 @Builder
 public class MovimientosTarjetaCredito {
     @Id
-    private String idMovimiento;
+    private String id;
     private String numeroDeTarjeta;
     private TipoMovimiento tipo;
-    private  MovimientosTarjetaCredito.Moneda moneda;
+    private Cantidad cantidad;
     private LocalDateTime fechaOperacion;
-    private MovimientosTarjetaCredito.Cobrador cobrador;
-    private MovimientosTarjetaCredito.Detallecompra detallecompra;
+    private Cobrador cobrador;
+    private List<Detallecompra> detallecompra;
+    private Boolean estado;
     private final static double COMISION = 0.005;
 
 
     @Getter
     @Setter
     @Builder
-    public static class Moneda{
+    public static class Cantidad{
         private String nombre;
         private BigDecimal valor;
 
@@ -49,13 +51,19 @@ public class MovimientosTarjetaCredito {
 
     }
 
+    @Getter
+    @Setter
+    @Builder
     public static class Detallecompra{
         private String nombre;
         private Integer cantidad;
         private BigDecimal importeUnitario;
         private BigDecimal importeSubtotal;
-        private Estado estado;
 
+    }
+
+    public static enum TipoMovimiento{
+        DEBITO, CREDITO;
     }
 
 

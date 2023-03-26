@@ -11,8 +11,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Getter
 @Setter
-@Document(collection = "tarjeta_credito")
 @Builder
+@Document(collection = "tarjeta_credito")
 public class TarjetaCredito {
     @Id
     private String numeroTarjeta;
