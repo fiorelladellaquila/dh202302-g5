@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface CreditCardRepository extends MongoRepository<UUID, CreditCard> {
+public interface CreditCardRepository extends MongoRepository<CreditCard, UUID> {
 
     List<CreditCard> findByQualifiedAmountAndAvailableAmount(BigDecimal QualifiedAmount, BigDecimal AvailableAmount);
 

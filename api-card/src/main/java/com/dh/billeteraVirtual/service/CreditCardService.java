@@ -12,10 +12,15 @@ import java.util.List;
 @Service
 public class CreditCardService {
 
-    @Autowired
+
     private CreditCardRepository creditCardRepository;
-    @Autowired
+
     private MarginsClient marginsClient;
+
+    public CreditCardService(CreditCardRepository creditCardRepository, MarginsClient marginsClient) {
+        this.creditCardRepository = creditCardRepository;
+        this.marginsClient = marginsClient;
+    }
 
     private List<CreditCard> findByQualifiedAmountAndAvailableAmount(BigDecimal QualifiedAmount, BigDecimal AvailableAmount){
         return creditCardRepository.findByQualifiedAmountAndAvailableAmount(QualifiedAmount, AvailableAmount);
@@ -33,7 +38,7 @@ public class CreditCardService {
         newCard.setConsumedAmount(new BigDecimal(0));
 
         newCard.setAvailableAmount(calificado);
-        newCard
+
 
         creditCardRepository.save(newCard);
     }
